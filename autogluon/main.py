@@ -1,32 +1,50 @@
+import json
+import sys
+
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from autogluon.tabular import TabularPredictor
 from sklearn import metrics
+from sklearn.model_selection import train_test_split
 
-# load data
-dataset = pd.read_csv("./data/github.csv")
+from autogluon.tabular import TabularPredictor
 
-train, test = train_test_split(
-    dataset,
-    train_size=0.9,
-    test_size=0.1,
-    random_state=1977,
-    stratify=dataset["Polarity"],
-)
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python3 autogluon/main.py github|jira")
+        sys.exit(1)
+    else:
+        dataset = sys.argv[1]
+        print("Using dataset: " + dataset)
 
-# train
-predictor = TabularPredictor(
-    label="Polarity", problem_type="multiclass", eval_metric="f1_macro"
-).fit(train, holdout_frac=0.2, presets='best_quality')
-predictor.leaderboard(train)
+    # load data
+    ds = pd.read_csv(f"./data/{dataset}.csv")
 
-# test
-predictions = predictor.predict(test)
+    train, test = train_test_split(
+        ds,
+        train_size=0.9,
+        test_size=0.1,
+        random_state=1977,
+        stratify=ds["Polarity"],
+    )
 
-# results
-res = predictor.evaluate(test)
-cm = metrics.confusion_matrix(
-    test["Polarity"], predictions, labels=["negative", "neutral", "positive"]
-)
-print(res)
-print(cm)
+    # train
+    predictor = TabularPredictor(
+        label="Polarity", problem_type="multiclass", eval_metric="f1_macro"
+    ).fit(train, holdout_frac=0.2, presets="best_quality")
+    predictor.leaderboard(train)
+
+    # test
+    predictions = predictor.predict(test)
+
+    # results
+    res = predictor.evaluate(test)
+    cm = metrics.confusion_matrix(
+        test["Polarity"], predictions, labels=["negative", "neutral", "positive"]
+    )
+    print(res)
+    print(cm)
+
+    with open(f"autogluon/{dataset}-res.json", "w") as fp:
+        json.dump(res, fp, indent=4, sort_keys=True)
+
+    with open(f"autogluon/{dataset}-cm.txt", "w") as fp:
+        fp.writelines(str(cm))
