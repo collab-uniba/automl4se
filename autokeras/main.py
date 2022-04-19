@@ -13,8 +13,7 @@ import autokeras as ak
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python3 autogluon/main.py github|jira")
-        # sys.exit(1)
-        dataset = "jira"
+        sys.exit(1)
     else:
         dataset = sys.argv[1]
         print("Using dataset: " + dataset)
