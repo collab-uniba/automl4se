@@ -43,8 +43,8 @@ if __name__ == "__main__":
     print(res)
     print(cm)
 
-    with open(f"autogluon/{dataset}-res.json", "w") as fp:
+    with open(f"autogluon/{dataset}-res.json", encoding="utf-8", mode="w") as fp:
         json.dump(res, fp, indent=4, sort_keys=True)
 
-    with open(f"autogluon/{dataset}-cm.txt", "w") as fp:
+    with open(f"autogluon/{dataset}-cm.txt", encoding="utf-8", mode="w") as fp:
         fp.writelines(str(cm))
