@@ -1,14 +1,36 @@
 import json
 import sys
 
+import kerastuner
 import numpy as np
 import pandas as pd
-import tensorflow as tf
 from sklearn import metrics
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
+from tensorflow.keras import backend as K
 
 import autokeras as ak
+
+
+def recall_m(y_true, y_pred):
+    true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+    possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+    recall = true_positives / (possible_positives + K.epsilon())
+    return recall
+
+
+def precision_m(y_true, y_pred):
+    true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+    predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
+    precision = true_positives / (predicted_positives + K.epsilon())
+    return precision
+
+
+def f1_score(y_true, y_pred):
+    precision = precision_m(y_true, y_pred)
+    recall = recall_m(y_true, y_pred)
+    return 2 * ((precision * recall) / (precision + recall + K.epsilon()))
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -31,8 +53,15 @@ if __name__ == "__main__":
     )
 
     # train
+    my_custom_objects={'f1_score': f1_score}
+    my_custom_objects.update(ak.CUSTOM_OBJECTS)
     clf = ak.TextClassifier(
-        overwrite=True  # , max_trials=1
+        project_name=f"autokeras_{dataset}",
+        overwrite=True,
+        objective=kerastuner.Objective("val_f1_score", direction="max"),
+        metrics=[f1_score],
+        max_trials=1,
+        custom_objects=my_custom_objects,
     )  # It only tries 1 model as a quick demo.
     clf.fit(
         x_train,

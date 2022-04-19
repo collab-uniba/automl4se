@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 .vscode
 AutogluonModels
-text_classifier
+autokeras_jira
+autokeras_github
