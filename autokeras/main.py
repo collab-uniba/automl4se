@@ -3,18 +3,18 @@ import sys
 
 import numpy as np
 import pandas as pd
-from sklearn import metrics
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
 import tensorflow as tf
+from sklearn import metrics
+from sklearn.metrics import classification_report
+from sklearn.model_selection import train_test_split
 
 import autokeras as ak
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python3 autogluon/main.py github|jira")
-        #sys.exit(1)
-        dataset = 'jira'
+        # sys.exit(1)
+        dataset = "jira"
     else:
         dataset = sys.argv[1]
         print("Using dataset: " + dataset)
@@ -31,10 +31,9 @@ if __name__ == "__main__":
         x, y, test_size=0.1, random_state=1977, stratify=y
     )
 
-
     # train
     clf = ak.TextClassifier(
-        overwrite=True#, max_trials=1
+        overwrite=True  # , max_trials=1
     )  # It only tries 1 model as a quick demo.
     clf.fit(
         x_train,
