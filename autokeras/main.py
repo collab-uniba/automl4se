@@ -53,7 +53,7 @@ if __name__ == "__main__":
     )
 
     # train
-    my_custom_objects={'f1_score': f1_score}
+    my_custom_objects = {"f1_score": f1_score}
     my_custom_objects.update(ak.CUSTOM_OBJECTS)
     clf = ak.TextClassifier(
         project_name=f"autokeras_{dataset}",
@@ -62,7 +62,7 @@ if __name__ == "__main__":
         metrics=[f1_score],
         # max_trials=1, # It only tries 1 model as a quick demo
         custom_objects=my_custom_objects,
-    )  
+    )
     clf.fit(
         x_train,
         y_train,
