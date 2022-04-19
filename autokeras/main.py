@@ -60,9 +60,9 @@ if __name__ == "__main__":
         overwrite=True,
         objective=kerastuner.Objective("val_f1_score", direction="max"),
         metrics=[f1_score],
-        max_trials=1,
+        # max_trials=1, # It only tries 1 model as a quick demo
         custom_objects=my_custom_objects,
-    )  # It only tries 1 model as a quick demo.
+    )  
     clf.fit(
         x_train,
         y_train,
