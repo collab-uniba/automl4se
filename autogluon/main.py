@@ -16,7 +16,7 @@ if __name__ == "__main__":
         print("Using dataset: " + dataset)
 
     # load data
-    ds = pd.read_csv(f"./data/{dataset}.csv")
+    ds = pd.read_csv(f"./data/{dataset}.csv", header=0)
 
     train, test = train_test_split(
         ds,
