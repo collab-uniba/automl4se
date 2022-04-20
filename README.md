@@ -10,7 +10,7 @@
 python <toolname>/main.py github|jira
 ```
 
-## Ludwig
+### Ludwig
 
 ```shell
 ludwig experiment --dataset=data/jira|github.csv --config_file=ludwig/config.yaml 
