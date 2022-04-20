@@ -1,0 +1,14 @@
+input_features:
+    -
+        name: Text
+        type: text
+
+output_features:
+    -
+        name: Polarity
+        type: category
+
+hyperopt:
+  goal: maximize
+  output_feature: Polarity
+  metric: f1_score
