@@ -2,8 +2,6 @@ input_features:
     -
         name: Text
         type: text
-        level: word
-        encoder: parallel_cnn
 
 output_features:
     -
@@ -13,5 +11,4 @@ output_features:
 hyperopt:
   goal: maximize
   output_feature: Polarity
-  metric: accuracy
-  split: test
+  metric: f1_score
