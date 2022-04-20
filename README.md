@@ -15,3 +15,7 @@ python <toolname>/main.py github|jira
 ```shell
 ludwig experiment --dataset=data/jira|github.csv --config_file=ludwig/config.yaml 
 ```
+
+### AutoGoal
+
+Make sure to run `autogoal/setup.py` before running the experiments.
