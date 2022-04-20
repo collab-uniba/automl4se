@@ -1,7 +1,7 @@
 
 ## Tool setup
 
-* Create a virtual env specific for the tool
+* Create a virtual env specific for the tool and activate it
 * Run `pip install -r <tool>/requirements.txt`
 
 ## Tool execution
