@@ -131,3 +131,4 @@ dmypy.json
 AutogluonModels
 autokeras_jira
 autokeras_github
+.DS_Store
