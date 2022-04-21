@@ -1,0 +1,504 @@
+███████████████████████
+█ █ █ █  ▜█ █ █ █ █   █
+█ █ █ █ █ █ █ █ █ █ ███
+█ █   █ █ █ █ █ █ █ ▌ █
+█ █████ █ █ █ █ █ █ █ █
+█     █  ▟█     █ █   █
+███████████████████████
+ludwig v0.4.1 - Experiment
+
+Experiment name: experiment
+Model name: run
+Output directory: results/experiment_run_1
+
+
+ludwig_version: '0.4.1'
+command: ('/home/fabio/.pyenv/versions/ludwig-venv/bin/ludwig experiment '
+ '--dataset=data/github.csv --config_file=ludwig/config.yaml')
+commit_hash: '73bf6935dd68'
+random_seed: 42
+dataset: 'data/github.csv'
+data_format: 'csv'
+config: {   'combiner': {'type': 'concat'},
+    'hyperopt': {   'goal': 'maximize',
+                    'metric': 'f1_score',
+                    'output_feature': 'Polarity'},
+    'input_features': [   {   'column': 'Text',
+                              'encoder': 'parallel_cnn',
+                              'level': 'word',
+                              'name': 'Text',
+                              'proc_column': 'Text_mZFLky',
+                              'tied': None,
+                              'type': 'text'}],
+    'output_features': [   {   'column': 'Polarity',
+                               'dependencies': [],
+                               'loss': {   'class_similarities_temperature': 0,
+                                           'class_weights': 1,
+                                           'confidence_penalty': 0,
+                                           'labels_smoothing': 0,
+                                           'robust_lambda': 0,
+                                           'type': 'softmax_cross_entropy',
+                                           'weight': 1},
+                               'name': 'Polarity',
+                               'proc_column': 'Polarity_mZFLky',
+                               'reduce_dependencies': 'sum',
+                               'reduce_input': 'sum',
+                               'top_k': 3,
+                               'type': 'category'}],
+    'preprocessing': {   'audio': {   'audio_feature': {'type': 'raw'},
+                                      'audio_file_length_limit_in_s': 7.5,
+                                      'in_memory': True,
+                                      'missing_value_strategy': 'backfill',
+                                      'norm': None,
+                                      'padding_value': 0},
+                         'bag': {   'fill_value': '<UNK>',
+                                    'lowercase': False,
+                                    'missing_value_strategy': 'fill_with_const',
+                                    'most_common': 10000,
+                                    'tokenizer': 'space'},
+                         'binary': {   'fill_value': 0,
+                                       'missing_value_strategy': 'fill_with_const'},
+                         'category': {   'fill_value': '<UNK>',
+                                         'lowercase': False,
+                                         'missing_value_strategy': 'fill_with_const',
+                                         'most_common': 10000},
+                         'date': {   'datetime_format': None,
+                                     'fill_value': '',
+                                     'missing_value_strategy': 'fill_with_const'},
+                         'force_split': False,
+                         'h3': {   'fill_value': 576495936675512319,
+                                   'missing_value_strategy': 'fill_with_const'},
+                         'image': {   'in_memory': True,
+                                      'infer_image_dimensions': True,
+                                      'infer_image_max_height': 256,
+                                      'infer_image_max_width': 256,
+                                      'infer_image_num_channels': True,
+                                      'infer_image_sample_size': 100,
+                                      'missing_value_strategy': 'backfill',
+                                      'num_processes': 1,
+                                      'resize_method': 'interpolate',
+                                      'scaling': 'pixel_normalization'},
+                         'numerical': {   'fill_value': 0,
+                                          'missing_value_strategy': 'fill_with_const',
+                                          'normalization': None},
+                         'sequence': {   'fill_value': '<UNK>',
+                                         'lowercase': False,
+                                         'missing_value_strategy': 'fill_with_const',
+                                         'most_common': 20000,
+                                         'padding': 'right',
+                                         'padding_symbol': '<PAD>',
+                                         'sequence_length_limit': 256,
+                                         'tokenizer': 'space',
+                                         'unknown_symbol': '<UNK>',
+                                         'vocab_file': None},
+                         'set': {   'fill_value': '<UNK>',
+                                    'lowercase': False,
+                                    'missing_value_strategy': 'fill_with_const',
+                                    'most_common': 10000,
+                                    'tokenizer': 'space'},
+                         'split_probabilities': (0.7, 0.1, 0.2),
+                         'stratify': None,
+                         'text': {   'char_most_common': 70,
+                                     'char_sequence_length_limit': 1024,
+                                     'char_tokenizer': 'characters',
+                                     'char_vocab_file': None,
+                                     'fill_value': '<UNK>',
+                                     'lowercase': True,
+                                     'missing_value_strategy': 'fill_with_const',
+                                     'padding': 'right',
+                                     'padding_symbol': '<PAD>',
+                                     'pretrained_model_name_or_path': None,
+                                     'unknown_symbol': '<UNK>',
+                                     'word_most_common': 20000,
+                                     'word_sequence_length_limit': 256,
+                                     'word_tokenizer': 'space_punct',
+                                     'word_vocab_file': None},
+                         'timeseries': {   'fill_value': '',
+                                           'missing_value_strategy': 'fill_with_const',
+                                           'padding': 'right',
+                                           'padding_value': 0,
+                                           'timeseries_length_limit': 256,
+                                           'tokenizer': 'space'},
+                         'vector': {   'fill_value': '',
+                                       'missing_value_strategy': 'fill_with_const'}},
+    'training': {   'batch_size': 128,
+                    'bucketing_field': None,
+                    'decay': False,
+                    'decay_rate': 0.96,
+                    'decay_steps': 10000,
+                    'early_stop': 5,
+                    'epochs': 100,
+                    'eval_batch_size': None,
+                    'gradient_clipping': None,
+                    'increase_batch_size_on_plateau': 0,
+                    'increase_batch_size_on_plateau_max': 512,
+                    'increase_batch_size_on_plateau_patience': 5,
+                    'increase_batch_size_on_plateau_rate': 2,
+                    'learning_rate': 0.001,
+                    'learning_rate_warmup_epochs': 1,
+                    'optimizer': {   'beta_1': 0.9,
+                                     'beta_2': 0.999,
+                                     'epsilon': 1e-08,
+                                     'type': 'adam'},
+                    'reduce_learning_rate_on_plateau': 0,
+                    'reduce_learning_rate_on_plateau_patience': 5,
+                    'reduce_learning_rate_on_plateau_rate': 0.5,
+                    'regularization_lambda': 0,
+                    'staircase': False,
+                    'validation_field': 'combined',
+                    'validation_metric': 'loss'}}
+tf_version: '2.7.1'
+
+
+Using full raw dataset, no hdf5 and json file with the same name have been found
+Building dataset (it may take a while)
+Writing preprocessed training set cache
+Writing preprocessed test set cache
+Writing preprocessed validation set cache
+Writing train set metadata
+Training set: 5029
+Validation set: 664
+Test set: 1429
+
+╒══════════╕
+│ TRAINING │
+╘══════════╛
+
+
+Epoch   1
+Training:   0%|          | 0/40 [00:00<?, ?it/s]Training:   2%|▎         | 1/40 [00:03<02:00,  3.08s/it]Training:   5%|▌         | 2/40 [00:03<00:59,  1.57s/it]Training:   8%|▊         | 3/40 [00:04<00:39,  1.07s/it]Training:  10%|█         | 4/40 [00:04<00:30,  1.20it/s]Training:  12%|█▎        | 5/40 [00:04<00:24,  1.43it/s]Training:  15%|█▌        | 6/40 [00:05<00:21,  1.59it/s]Training:  18%|█▊        | 7/40 [00:06<00:19,  1.69it/s]Training:  20%|██        | 8/40 [00:06<00:17,  1.79it/s]Training:  22%|██▎       | 9/40 [00:07<00:16,  1.84it/s]Training:  25%|██▌       | 10/40 [00:07<00:15,  1.93it/s]Training:  28%|██▊       | 11/40 [00:07<00:14,  2.03it/s]Training:  30%|███       | 12/40 [00:08<00:13,  2.04it/s]Training:  32%|███▎      | 13/40 [00:08<00:13,  2.04it/s]Training:  35%|███▌      | 14/40 [00:09<00:12,  2.09it/s]Training:  38%|███▊      | 15/40 [00:09<00:11,  2.13it/s]Training:  40%|████      | 16/40 [00:10<00:11,  2.16it/s]Training:  42%|████▎     | 17/40 [00:10<00:10,  2.16it/s]Training:  45%|████▌     | 18/40 [00:11<00:10,  2.16it/s]Training:  48%|████▊     | 19/40 [00:11<00:09,  2.18it/s]Training:  50%|█████     | 20/40 [00:12<00:09,  2.20it/s]Training:  52%|█████▎    | 21/40 [00:12<00:08,  2.20it/s]Training:  55%|█████▌    | 22/40 [00:12<00:08,  2.22it/s]Training:  57%|█████▊    | 23/40 [00:13<00:07,  2.18it/s]Training:  60%|██████    | 24/40 [00:14<00:08,  1.98it/s]Training:  62%|██████▎   | 25/40 [00:14<00:07,  2.00it/s]Training:  65%|██████▌   | 26/40 [00:15<00:07,  1.94it/s]Training:  68%|██████▊   | 27/40 [00:15<00:07,  1.84it/s]Training:  70%|███████   | 28/40 [00:16<00:06,  1.83it/s]Training:  72%|███████▎  | 29/40 [00:16<00:06,  1.82it/s]Training:  75%|███████▌  | 30/40 [00:17<00:05,  1.85it/s]Training:  78%|███████▊  | 31/40 [00:17<00:04,  1.86it/s]Training:  80%|████████  | 32/40 [00:18<00:04,  1.94it/s]Training:  82%|████████▎ | 33/40 [00:18<00:03,  1.96it/s]Training:  85%|████████▌ | 34/40 [00:19<00:03,  1.99it/s]Training:  88%|████████▊ | 35/40 [00:19<00:02,  2.02it/s]Training:  90%|█████████ | 36/40 [00:20<00:01,  2.01it/s]Training:  92%|█████████▎| 37/40 [00:20<00:01,  2.04it/s]Training:  95%|█████████▌| 38/40 [00:21<00:00,  2.04it/s]Training:  98%|█████████▊| 39/40 [00:21<00:00,  1.99it/s]Training: 100%|██████████| 40/40 [00:22<00:00,  1.96it/s]Training: 100%|██████████| 40/40 [00:22<00:00,  1.79it/s]
+Evaluation train:   0%|          | 0/40 [00:00<?, ?it/s]Evaluation train:   2%|▎         | 1/40 [00:00<00:30,  1.27it/s]Evaluation train:   5%|▌         | 2/40 [00:00<00:14,  2.56it/s]Evaluation train:   8%|▊         | 3/40 [00:01<00:10,  3.68it/s]Evaluation train:  10%|█         | 4/40 [00:01<00:07,  4.68it/s]Evaluation train:  12%|█▎        | 5/40 [00:01<00:06,  5.33it/s]Evaluation train:  15%|█▌        | 6/40 [00:01<00:05,  6.10it/s]Evaluation train:  18%|█▊        | 7/40 [00:01<00:04,  6.84it/s]Evaluation train:  20%|██        | 8/40 [00:01<00:04,  7.46it/s]Evaluation train:  22%|██▎       | 9/40 [00:01<00:03,  7.89it/s]Evaluation train:  25%|██▌       | 10/40 [00:01<00:03,  8.26it/s]Evaluation train:  28%|██▊       | 11/40 [00:01<00:03,  8.53it/s]Evaluation train:  30%|███       | 12/40 [00:02<00:03,  8.76it/s]Evaluation train:  32%|███▎      | 13/40 [00:02<00:03,  8.91it/s]Evaluation train:  35%|███▌      | 14/40 [00:02<00:02,  9.03it/s]Evaluation train:  38%|███▊      | 15/40 [00:02<00:02,  9.11it/s]Evaluation train:  40%|████      | 16/40 [00:02<00:02,  9.09it/s]Evaluation train:  42%|████▎     | 17/40 [00:02<00:02,  9.14it/s]Evaluation train:  45%|████▌     | 18/40 [00:02<00:02,  9.14it/s]Evaluation train:  48%|████▊     | 19/40 [00:02<00:02,  9.02it/s]Evaluation train:  50%|█████     | 20/40 [00:02<00:02,  8.99it/s]Evaluation train:  52%|█████▎    | 21/40 [00:03<00:02,  8.71it/s]Evaluation train:  55%|█████▌    | 22/40 [00:03<00:02,  8.89it/s]Evaluation train:  57%|█████▊    | 23/40 [00:03<00:01,  9.01it/s]Evaluation train:  60%|██████    | 24/40 [00:03<00:01,  9.09it/s]Evaluation train:  62%|██████▎   | 25/40 [00:03<00:01,  9.18it/s]Evaluation train:  65%|██████▌   | 26/40 [00:03<00:01,  9.18it/s]Evaluation train:  68%|██████▊   | 27/40 [00:03<00:01,  9.18it/s]Evaluation train:  70%|███████   | 28/40 [00:03<00:01,  9.22it/s]Evaluation train:  72%|███████▎  | 29/40 [00:03<00:01,  9.25it/s]Evaluation train:  75%|███████▌  | 30/40 [00:04<00:01,  9.26it/s]Evaluation train:  78%|███████▊  | 31/40 [00:04<00:00,  9.11it/s]Evaluation train:  80%|████████  | 32/40 [00:04<00:00,  9.18it/s]Evaluation train:  82%|████████▎ | 33/40 [00:04<00:00,  9.29it/s]Evaluation train:  85%|████████▌ | 34/40 [00:04<00:00,  9.29it/s]Evaluation train:  88%|████████▊ | 35/40 [00:04<00:00,  9.20it/s]Evaluation train:  90%|█████████ | 36/40 [00:04<00:00,  9.27it/s]Evaluation train:  92%|█████████▎| 37/40 [00:04<00:00,  9.28it/s]Evaluation train:  95%|█████████▌| 38/40 [00:04<00:00,  9.10it/s]Evaluation train:  98%|█████████▊| 39/40 [00:05<00:00,  9.07it/s]Evaluation train: 100%|██████████| 40/40 [00:05<00:00,  6.61it/s]Evaluation train: 100%|██████████| 40/40 [00:05<00:00,  7.59it/s]
+Evaluation vali :   0%|          | 0/6 [00:00<?, ?it/s]Evaluation vali :  17%|█▋        | 1/6 [00:00<00:00,  8.59it/s]Evaluation vali :  33%|███▎      | 2/6 [00:00<00:00,  8.93it/s]Evaluation vali :  50%|█████     | 3/6 [00:00<00:00,  9.09it/s]Evaluation vali :  67%|██████▋   | 4/6 [00:00<00:00,  9.15it/s]Evaluation vali :  83%|████████▎ | 5/6 [00:00<00:00,  9.21it/s]Evaluation vali : 100%|██████████| 6/6 [00:00<00:00,  7.04it/s]Evaluation vali : 100%|██████████| 6/6 [00:00<00:00,  7.94it/s]
+Evaluation test :   0%|          | 0/12 [00:00<?, ?it/s]Evaluation test :   8%|▊         | 1/12 [00:00<00:01,  9.05it/s]Evaluation test :  17%|█▋        | 2/12 [00:00<00:01,  8.92it/s]Evaluation test :  25%|██▌       | 3/12 [00:00<00:01,  8.96it/s]Evaluation test :  33%|███▎      | 4/12 [00:00<00:00,  8.94it/s]Evaluation test :  42%|████▏     | 5/12 [00:00<00:00,  8.84it/s]Evaluation test :  50%|█████     | 6/12 [00:00<00:00,  8.82it/s]Evaluation test :  58%|█████▊    | 7/12 [00:00<00:00,  8.90it/s]Evaluation test :  67%|██████▋   | 8/12 [00:00<00:00,  8.93it/s]Evaluation test :  75%|███████▌  | 9/12 [00:01<00:00,  8.83it/s]Evaluation test :  83%|████████▎ | 10/12 [00:01<00:00,  8.55it/s]Evaluation test :  92%|█████████▏| 11/12 [00:01<00:00,  8.49it/s]Evaluation test : 100%|██████████| 12/12 [00:01<00:00,  6.97it/s]Evaluation test : 100%|██████████| 12/12 [00:01<00:00,  8.21it/s]
+Took 29.7870s
+╒════════════╤════════╤════════════╤═════════════╕
+│ Polarity   │   loss │   accuracy │   hits_at_k │
+╞════════════╪════════╪════════════╪═════════════╡
+│ train      │ 0.7911 │     0.6105 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ vali       │ 0.8392 │     0.6009 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ test       │ 0.8828 │     0.5703 │      1.0000 │
+╘════════════╧════════╧════════════╧═════════════╛
+╒════════════╤════════╕
+│ combined   │   loss │
+╞════════════╪════════╡
+│ train      │ 0.7911 │
+├────────────┼────────┤
+│ vali       │ 0.8392 │
+├────────────┼────────┤
+│ test       │ 0.8828 │
+╘════════════╧════════╛
+Validation loss on combined improved, model saved
+
+
+Epoch   2
+Training:   0%|          | 0/40 [00:00<?, ?it/s]Training:   2%|▎         | 1/40 [00:00<00:20,  1.92it/s]Training:   5%|▌         | 2/40 [00:01<00:19,  1.97it/s]Training:   8%|▊         | 3/40 [00:01<00:21,  1.75it/s]Training:  10%|█         | 4/40 [00:02<00:19,  1.84it/s]Training:  12%|█▎        | 5/40 [00:02<00:17,  1.96it/s]Training:  15%|█▌        | 6/40 [00:03<00:16,  2.04it/s]Training:  18%|█▊        | 7/40 [00:03<00:15,  2.11it/s]Training:  20%|██        | 8/40 [00:03<00:14,  2.16it/s]Training:  22%|██▎       | 9/40 [00:04<00:14,  2.20it/s]Training:  25%|██▌       | 10/40 [00:04<00:13,  2.23it/s]Training:  28%|██▊       | 11/40 [00:05<00:12,  2.25it/s]Training:  30%|███       | 12/40 [00:05<00:12,  2.27it/s]Training:  32%|███▎      | 13/40 [00:06<00:11,  2.26it/s]Training:  35%|███▌      | 14/40 [00:06<00:11,  2.22it/s]Training:  38%|███▊      | 15/40 [00:07<00:11,  2.20it/s]Training:  40%|████      | 16/40 [00:07<00:10,  2.22it/s]Training:  42%|████▎     | 17/40 [00:07<00:10,  2.23it/s]Training:  45%|████▌     | 18/40 [00:08<00:09,  2.23it/s]Training:  48%|████▊     | 19/40 [00:08<00:09,  2.24it/s]Training:  50%|█████     | 20/40 [00:09<00:08,  2.25it/s]Training:  52%|█████▎    | 21/40 [00:09<00:08,  2.26it/s]Training:  55%|█████▌    | 22/40 [00:10<00:07,  2.25it/s]Training:  57%|█████▊    | 23/40 [00:10<00:07,  2.21it/s]Training:  60%|██████    | 24/40 [00:11<00:07,  2.19it/s]Training:  62%|██████▎   | 25/40 [00:11<00:06,  2.21it/s]Training:  65%|██████▌   | 26/40 [00:11<00:06,  2.23it/s]Training:  68%|██████▊   | 27/40 [00:12<00:05,  2.22it/s]Training:  70%|███████   | 28/40 [00:12<00:05,  2.19it/s]Training:  72%|███████▎  | 29/40 [00:13<00:04,  2.22it/s]Training:  75%|███████▌  | 30/40 [00:13<00:04,  2.22it/s]Training:  78%|███████▊  | 31/40 [00:14<00:04,  2.22it/s]Training:  80%|████████  | 32/40 [00:14<00:03,  2.16it/s]Training:  82%|████████▎ | 33/40 [00:15<00:03,  2.21it/s]Training:  85%|████████▌ | 34/40 [00:15<00:02,  2.23it/s]Training:  88%|████████▊ | 35/40 [00:16<00:02,  2.26it/s]Training:  90%|█████████ | 36/40 [00:16<00:01,  2.24it/s]Training:  92%|█████████▎| 37/40 [00:16<00:01,  2.19it/s]Training:  95%|█████████▌| 38/40 [00:17<00:00,  2.22it/s]Training:  98%|█████████▊| 39/40 [00:17<00:00,  2.21it/s]Training: 100%|██████████| 40/40 [00:18<00:00,  2.77it/s]Training: 100%|██████████| 40/40 [00:18<00:00,  2.22it/s]
+Evaluation train:   0%|          | 0/40 [00:00<?, ?it/s]Evaluation train:   2%|▎         | 1/40 [00:00<00:04,  9.50it/s]Evaluation train:   5%|▌         | 2/40 [00:00<00:04,  9.50it/s]Evaluation train:   8%|▊         | 3/40 [00:00<00:03,  9.60it/s]Evaluation train:  10%|█         | 4/40 [00:00<00:03,  9.62it/s]Evaluation train:  12%|█▎        | 5/40 [00:00<00:03,  9.06it/s]Evaluation train:  15%|█▌        | 6/40 [00:00<00:03,  9.19it/s]Evaluation train:  18%|█▊        | 7/40 [00:00<00:03,  9.33it/s]Evaluation train:  20%|██        | 8/40 [00:00<00:03,  9.50it/s]Evaluation train:  22%|██▎       | 9/40 [00:00<00:03,  9.54it/s]Evaluation train:  25%|██▌       | 10/40 [00:01<00:03,  9.36it/s]Evaluation train:  28%|██▊       | 11/40 [00:01<00:03,  9.16it/s]Evaluation train:  30%|███       | 12/40 [00:01<00:03,  9.23it/s]Evaluation train:  32%|███▎      | 13/40 [00:01<00:02,  9.34it/s]Evaluation train:  35%|███▌      | 14/40 [00:01<00:02,  9.40it/s]Evaluation train:  38%|███▊      | 15/40 [00:01<00:02,  9.50it/s]Evaluation train:  40%|████      | 16/40 [00:01<00:02,  9.56it/s]Evaluation train:  42%|████▎     | 17/40 [00:01<00:02,  9.61it/s]Evaluation train:  45%|████▌     | 18/40 [00:01<00:02,  9.66it/s]Evaluation train:  48%|████▊     | 19/40 [00:02<00:02,  9.56it/s]Evaluation train:  50%|█████     | 20/40 [00:02<00:02,  9.57it/s]Evaluation train:  52%|█████▎    | 21/40 [00:02<00:01,  9.60it/s]Evaluation train:  55%|█████▌    | 22/40 [00:02<00:01,  9.62it/s]Evaluation train:  57%|█████▊    | 23/40 [00:02<00:01,  9.61it/s]Evaluation train:  60%|██████    | 24/40 [00:02<00:01,  9.62it/s]Evaluation train:  62%|██████▎   | 25/40 [00:02<00:01,  9.15it/s]Evaluation train:  65%|██████▌   | 26/40 [00:02<00:01,  8.96it/s]Evaluation train:  68%|██████▊   | 27/40 [00:02<00:01,  9.21it/s]Evaluation train:  70%|███████   | 28/40 [00:02<00:01,  9.32it/s]Evaluation train:  72%|███████▎  | 29/40 [00:03<00:01,  9.41it/s]Evaluation train:  75%|███████▌  | 30/40 [00:03<00:01,  9.37it/s]Evaluation train:  78%|███████▊  | 31/40 [00:03<00:00,  9.32it/s]Evaluation train:  80%|████████  | 32/40 [00:03<00:00,  9.31it/s]Evaluation train:  82%|████████▎ | 33/40 [00:03<00:00,  9.42it/s]Evaluation train:  85%|████████▌ | 34/40 [00:03<00:00,  9.52it/s]Evaluation train:  88%|████████▊ | 35/40 [00:03<00:00,  9.48it/s]Evaluation train:  90%|█████████ | 36/40 [00:03<00:00,  9.53it/s]Evaluation train:  92%|█████████▎| 37/40 [00:03<00:00,  9.55it/s]Evaluation train:  95%|█████████▌| 38/40 [00:04<00:00,  9.59it/s]Evaluation train:  98%|█████████▊| 39/40 [00:04<00:00,  9.59it/s]Evaluation train: 100%|██████████| 40/40 [00:04<00:00,  9.61it/s]
+Evaluation vali :   0%|          | 0/6 [00:00<?, ?it/s]Evaluation vali :  17%|█▋        | 1/6 [00:00<00:00,  9.67it/s]Evaluation vali :  33%|███▎      | 2/6 [00:00<00:00,  9.62it/s]Evaluation vali :  50%|█████     | 3/6 [00:00<00:00,  9.70it/s]Evaluation vali :  67%|██████▋   | 4/6 [00:00<00:00,  9.71it/s]Evaluation vali :  83%|████████▎ | 5/6 [00:00<00:00,  9.55it/s]Evaluation vali : 100%|██████████| 6/6 [00:00<00:00, 11.05it/s]
+Evaluation test :   0%|          | 0/12 [00:00<?, ?it/s]Evaluation test :   8%|▊         | 1/12 [00:00<00:01,  9.84it/s]Evaluation test :  17%|█▋        | 2/12 [00:00<00:01,  9.78it/s]Evaluation test :  25%|██▌       | 3/12 [00:00<00:00,  9.66it/s]Evaluation test :  33%|███▎      | 4/12 [00:00<00:00,  9.30it/s]Evaluation test :  42%|████▏     | 5/12 [00:00<00:00,  9.40it/s]Evaluation test :  50%|█████     | 6/12 [00:00<00:00,  9.42it/s]Evaluation test :  58%|█████▊    | 7/12 [00:00<00:00,  9.54it/s]Evaluation test :  67%|██████▋   | 8/12 [00:00<00:00,  9.54it/s]Evaluation test :  75%|███████▌  | 9/12 [00:00<00:00,  9.51it/s]Evaluation test :  83%|████████▎ | 10/12 [00:01<00:00,  9.50it/s]Evaluation test :  92%|█████████▏| 11/12 [00:01<00:00,  9.48it/s]Evaluation test : 100%|██████████| 12/12 [00:01<00:00, 10.21it/s]
+Took 23.9161s
+╒════════════╤════════╤════════════╤═════════════╕
+│ Polarity   │   loss │   accuracy │   hits_at_k │
+╞════════════╪════════╪════════════╪═════════════╡
+│ train      │ 0.1599 │     0.9459 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ vali       │ 0.3674 │     0.8584 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ test       │ 0.3879 │     0.8642 │      1.0000 │
+╘════════════╧════════╧════════════╧═════════════╛
+╒════════════╤════════╕
+│ combined   │   loss │
+╞════════════╪════════╡
+│ train      │ 0.1599 │
+├────────────┼────────┤
+│ vali       │ 0.3674 │
+├────────────┼────────┤
+│ test       │ 0.3879 │
+╘════════════╧════════╛
+Validation loss on combined improved, model saved
+
+
+Epoch   3
+Training:   0%|          | 0/40 [00:00<?, ?it/s]Training:   2%|▎         | 1/40 [00:00<00:17,  2.25it/s]Training:   5%|▌         | 2/40 [00:00<00:16,  2.27it/s]Training:   8%|▊         | 3/40 [00:01<00:16,  2.29it/s]Training:  10%|█         | 4/40 [00:01<00:16,  2.16it/s]Training:  12%|█▎        | 5/40 [00:02<00:15,  2.19it/s]Training:  15%|█▌        | 6/40 [00:02<00:15,  2.23it/s]Training:  18%|█▊        | 7/40 [00:03<00:14,  2.25it/s]Training:  20%|██        | 8/40 [00:03<00:14,  2.27it/s]Training:  22%|██▎       | 9/40 [00:04<00:13,  2.27it/s]Training:  25%|██▌       | 10/40 [00:04<00:13,  2.28it/s]Training:  28%|██▊       | 11/40 [00:04<00:12,  2.26it/s]Training:  30%|███       | 12/40 [00:05<00:12,  2.27it/s]Training:  32%|███▎      | 13/40 [00:05<00:12,  2.17it/s]Training:  35%|███▌      | 14/40 [00:06<00:11,  2.20it/s]Training:  38%|███▊      | 15/40 [00:06<00:11,  2.19it/s]Training:  40%|████      | 16/40 [00:07<00:10,  2.23it/s]Training:  42%|████▎     | 17/40 [00:07<00:10,  2.19it/s]Training:  45%|████▌     | 18/40 [00:08<00:10,  2.18it/s]Training:  48%|████▊     | 19/40 [00:08<00:09,  2.19it/s]Training:  50%|█████     | 20/40 [00:09<00:09,  2.16it/s]Training:  52%|█████▎    | 21/40 [00:09<00:08,  2.17it/s]Training:  55%|█████▌    | 22/40 [00:09<00:08,  2.20it/s]Training:  57%|█████▊    | 23/40 [00:10<00:07,  2.24it/s]Training:  60%|██████    | 24/40 [00:10<00:07,  2.26it/s]Training:  62%|██████▎   | 25/40 [00:11<00:06,  2.27it/s]Training:  65%|██████▌   | 26/40 [00:11<00:06,  2.27it/s]Training:  68%|██████▊   | 27/40 [00:12<00:05,  2.28it/s]Training:  70%|███████   | 28/40 [00:12<00:05,  2.24it/s]Training:  72%|███████▎  | 29/40 [00:13<00:04,  2.21it/s]Training:  75%|███████▌  | 30/40 [00:13<00:04,  2.24it/s]Training:  78%|███████▊  | 31/40 [00:13<00:03,  2.27it/s]Training:  80%|████████  | 32/40 [00:14<00:03,  2.27it/s]Training:  82%|████████▎ | 33/40 [00:14<00:03,  2.22it/s]Training:  85%|████████▌ | 34/40 [00:15<00:02,  2.24it/s]Training:  88%|████████▊ | 35/40 [00:15<00:02,  2.27it/s]Training:  90%|█████████ | 36/40 [00:16<00:01,  2.28it/s]Training:  92%|█████████▎| 37/40 [00:16<00:01,  2.23it/s]Training:  95%|█████████▌| 38/40 [00:17<00:00,  2.20it/s]Training:  98%|█████████▊| 39/40 [00:17<00:00,  2.23it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.80it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.27it/s]
+Evaluation train:   0%|          | 0/40 [00:00<?, ?it/s]Evaluation train:   2%|▎         | 1/40 [00:00<00:04,  9.64it/s]Evaluation train:   5%|▌         | 2/40 [00:00<00:04,  8.49it/s]Evaluation train:   8%|▊         | 3/40 [00:00<00:04,  9.01it/s]Evaluation train:  10%|█         | 4/40 [00:00<00:03,  9.21it/s]Evaluation train:  12%|█▎        | 5/40 [00:00<00:03,  9.39it/s]Evaluation train:  15%|█▌        | 6/40 [00:00<00:03,  9.42it/s]Evaluation train:  18%|█▊        | 7/40 [00:00<00:03,  9.54it/s]Evaluation train:  20%|██        | 8/40 [00:00<00:03,  8.94it/s]Evaluation train:  22%|██▎       | 9/40 [00:01<00:03,  8.57it/s]Evaluation train:  25%|██▌       | 10/40 [00:01<00:03,  8.33it/s]Evaluation train:  28%|██▊       | 11/40 [00:01<00:03,  8.17it/s]Evaluation train:  30%|███       | 12/40 [00:01<00:03,  8.07it/s]Evaluation train:  32%|███▎      | 13/40 [00:01<00:03,  8.47it/s]Evaluation train:  35%|███▌      | 14/40 [00:01<00:02,  8.75it/s]Evaluation train:  38%|███▊      | 15/40 [00:01<00:02,  9.01it/s]Evaluation train:  40%|████      | 16/40 [00:01<00:02,  9.13it/s]Evaluation train:  42%|████▎     | 17/40 [00:01<00:02,  9.26it/s]Evaluation train:  45%|████▌     | 18/40 [00:02<00:02,  9.29it/s]Evaluation train:  48%|████▊     | 19/40 [00:02<00:02,  9.27it/s]Evaluation train:  50%|█████     | 20/40 [00:02<00:02,  8.80it/s]Evaluation train:  52%|█████▎    | 21/40 [00:02<00:02,  8.87it/s]Evaluation train:  55%|█████▌    | 22/40 [00:02<00:01,  9.06it/s]Evaluation train:  57%|█████▊    | 23/40 [00:02<00:01,  9.20it/s]Evaluation train:  60%|██████    | 24/40 [00:02<00:01,  9.09it/s]Evaluation train:  62%|██████▎   | 25/40 [00:02<00:01,  9.20it/s]Evaluation train:  65%|██████▌   | 26/40 [00:02<00:01,  9.06it/s]Evaluation train:  68%|██████▊   | 27/40 [00:03<00:01,  9.21it/s]Evaluation train:  70%|███████   | 28/40 [00:03<00:01,  9.37it/s]Evaluation train:  72%|███████▎  | 29/40 [00:03<00:01,  9.45it/s]Evaluation train:  75%|███████▌  | 30/40 [00:03<00:01,  9.51it/s]Evaluation train:  78%|███████▊  | 31/40 [00:03<00:00,  9.49it/s]Evaluation train:  80%|████████  | 32/40 [00:03<00:00,  9.46it/s]Evaluation train:  82%|████████▎ | 33/40 [00:03<00:00,  9.47it/s]Evaluation train:  85%|████████▌ | 34/40 [00:03<00:00,  9.47it/s]Evaluation train:  88%|████████▊ | 35/40 [00:03<00:00,  9.43it/s]Evaluation train:  90%|█████████ | 36/40 [00:03<00:00,  9.38it/s]Evaluation train:  92%|█████████▎| 37/40 [00:04<00:00,  9.48it/s]Evaluation train:  95%|█████████▌| 38/40 [00:04<00:00,  9.52it/s]Evaluation train:  98%|█████████▊| 39/40 [00:04<00:00,  9.60it/s]Evaluation train: 100%|██████████| 40/40 [00:04<00:00,  9.30it/s]
+Evaluation vali :   0%|          | 0/6 [00:00<?, ?it/s]Evaluation vali :  17%|█▋        | 1/6 [00:00<00:00,  9.61it/s]Evaluation vali :  33%|███▎      | 2/6 [00:00<00:00,  9.59it/s]Evaluation vali :  50%|█████     | 3/6 [00:00<00:00,  9.66it/s]Evaluation vali :  67%|██████▋   | 4/6 [00:00<00:00,  9.53it/s]Evaluation vali :  83%|████████▎ | 5/6 [00:00<00:00,  9.50it/s]Evaluation vali : 100%|██████████| 6/6 [00:00<00:00, 11.01it/s]
+Evaluation test :   0%|          | 0/12 [00:00<?, ?it/s]Evaluation test :   8%|▊         | 1/12 [00:00<00:01,  8.50it/s]Evaluation test :  17%|█▋        | 2/12 [00:00<00:01,  9.20it/s]Evaluation test :  25%|██▌       | 3/12 [00:00<00:00,  9.44it/s]Evaluation test :  33%|███▎      | 4/12 [00:00<00:00,  9.51it/s]Evaluation test :  42%|████▏     | 5/12 [00:00<00:00,  9.60it/s]Evaluation test :  50%|█████     | 6/12 [00:00<00:00,  9.68it/s]Evaluation test :  58%|█████▊    | 7/12 [00:00<00:00,  9.69it/s]Evaluation test :  67%|██████▋   | 8/12 [00:00<00:00,  9.65it/s]Evaluation test :  75%|███████▌  | 9/12 [00:00<00:00,  9.65it/s]Evaluation test :  83%|████████▎ | 10/12 [00:01<00:00,  9.03it/s]Evaluation test :  92%|█████████▏| 11/12 [00:01<00:00,  8.48it/s]Evaluation test : 100%|██████████| 12/12 [00:01<00:00,  9.79it/s]
+Took 23.7069s
+╒════════════╤════════╤════════════╤═════════════╕
+│ Polarity   │   loss │   accuracy │   hits_at_k │
+╞════════════╪════════╪════════════╪═════════════╡
+│ train      │ 0.0282 │     0.9954 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ vali       │ 0.3388 │     0.8705 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ test       │ 0.3641 │     0.8656 │      1.0000 │
+╘════════════╧════════╧════════════╧═════════════╛
+╒════════════╤════════╕
+│ combined   │   loss │
+╞════════════╪════════╡
+│ train      │ 0.0282 │
+├────────────┼────────┤
+│ vali       │ 0.3388 │
+├────────────┼────────┤
+│ test       │ 0.3641 │
+╘════════════╧════════╛
+Validation loss on combined improved, model saved
+
+
+Epoch   4
+Training:   0%|          | 0/40 [00:00<?, ?it/s]Training:   2%|▎         | 1/40 [00:00<00:16,  2.30it/s]Training:   5%|▌         | 2/40 [00:00<00:16,  2.29it/s]Training:   8%|▊         | 3/40 [00:01<00:16,  2.24it/s]Training:  10%|█         | 4/40 [00:01<00:15,  2.27it/s]Training:  12%|█▎        | 5/40 [00:02<00:15,  2.29it/s]Training:  15%|█▌        | 6/40 [00:02<00:14,  2.30it/s]Training:  18%|█▊        | 7/40 [00:03<00:14,  2.30it/s]Training:  20%|██        | 8/40 [00:03<00:14,  2.27it/s]Training:  22%|██▎       | 9/40 [00:03<00:13,  2.28it/s]Training:  25%|██▌       | 10/40 [00:04<00:13,  2.29it/s]Training:  28%|██▊       | 11/40 [00:04<00:12,  2.29it/s]Training:  30%|███       | 12/40 [00:05<00:12,  2.27it/s]Training:  32%|███▎      | 13/40 [00:05<00:12,  2.21it/s]Training:  35%|███▌      | 14/40 [00:06<00:12,  2.13it/s]Training:  38%|███▊      | 15/40 [00:06<00:11,  2.18it/s]Training:  40%|████      | 16/40 [00:07<00:10,  2.22it/s]Training:  42%|████▎     | 17/40 [00:07<00:10,  2.21it/s]Training:  45%|████▌     | 18/40 [00:08<00:10,  2.15it/s]Training:  48%|████▊     | 19/40 [00:08<00:09,  2.18it/s]Training:  50%|█████     | 20/40 [00:08<00:09,  2.22it/s]Training:  52%|█████▎    | 21/40 [00:09<00:08,  2.24it/s]Training:  55%|█████▌    | 22/40 [00:09<00:08,  2.19it/s]Training:  57%|█████▊    | 23/40 [00:10<00:07,  2.22it/s]Training:  60%|██████    | 24/40 [00:10<00:07,  2.25it/s]Training:  62%|██████▎   | 25/40 [00:11<00:06,  2.27it/s]Training:  65%|██████▌   | 26/40 [00:11<00:06,  2.27it/s]Training:  68%|██████▊   | 27/40 [00:12<00:05,  2.22it/s]Training:  70%|███████   | 28/40 [00:12<00:05,  2.24it/s]Training:  72%|███████▎  | 29/40 [00:12<00:04,  2.27it/s]Training:  75%|███████▌  | 30/40 [00:13<00:04,  2.28it/s]Training:  78%|███████▊  | 31/40 [00:13<00:03,  2.28it/s]Training:  80%|████████  | 32/40 [00:14<00:03,  2.26it/s]Training:  82%|████████▎ | 33/40 [00:14<00:03,  2.27it/s]Training:  85%|████████▌ | 34/40 [00:15<00:02,  2.29it/s]Training:  88%|████████▊ | 35/40 [00:15<00:02,  2.29it/s]Training:  90%|█████████ | 36/40 [00:15<00:01,  2.29it/s]Training:  92%|█████████▎| 37/40 [00:16<00:01,  2.29it/s]Training:  95%|█████████▌| 38/40 [00:16<00:00,  2.19it/s]Training:  98%|█████████▊| 39/40 [00:17<00:00,  2.23it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.79it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.28it/s]
+Evaluation train:   0%|          | 0/40 [00:00<?, ?it/s]Evaluation train:   2%|▎         | 1/40 [00:00<00:04,  9.57it/s]Evaluation train:   5%|▌         | 2/40 [00:00<00:03,  9.65it/s]Evaluation train:   8%|▊         | 3/40 [00:00<00:03,  9.70it/s]Evaluation train:  10%|█         | 4/40 [00:00<00:03,  9.66it/s]Evaluation train:  12%|█▎        | 5/40 [00:00<00:03,  9.30it/s]Evaluation train:  15%|█▌        | 6/40 [00:00<00:03,  9.43it/s]Evaluation train:  18%|█▊        | 7/40 [00:00<00:03,  9.52it/s]Evaluation train:  20%|██        | 8/40 [00:00<00:03,  9.48it/s]Evaluation train:  22%|██▎       | 9/40 [00:00<00:03,  9.59it/s]Evaluation train:  25%|██▌       | 10/40 [00:01<00:03,  9.62it/s]Evaluation train:  28%|██▊       | 11/40 [00:01<00:03,  9.18it/s]Evaluation train:  30%|███       | 12/40 [00:01<00:03,  8.66it/s]Evaluation train:  32%|███▎      | 13/40 [00:01<00:03,  8.59it/s]Evaluation train:  35%|███▌      | 14/40 [00:01<00:02,  8.91it/s]Evaluation train:  38%|███▊      | 15/40 [00:01<00:02,  8.66it/s]Evaluation train:  40%|████      | 16/40 [00:01<00:02,  8.76it/s]Evaluation train:  42%|████▎     | 17/40 [00:01<00:02,  9.06it/s]Evaluation train:  45%|████▌     | 18/40 [00:01<00:02,  9.17it/s]Evaluation train:  48%|████▊     | 19/40 [00:02<00:02,  9.32it/s]Evaluation train:  50%|█████     | 20/40 [00:02<00:02,  9.42it/s]Evaluation train:  52%|█████▎    | 21/40 [00:02<00:02,  9.49it/s]Evaluation train:  55%|█████▌    | 22/40 [00:02<00:01,  9.60it/s]Evaluation train:  57%|█████▊    | 23/40 [00:02<00:01,  9.57it/s]Evaluation train:  60%|██████    | 24/40 [00:02<00:01,  9.19it/s]Evaluation train:  62%|██████▎   | 25/40 [00:02<00:01,  9.30it/s]Evaluation train:  65%|██████▌   | 26/40 [00:02<00:01,  9.33it/s]Evaluation train:  68%|██████▊   | 27/40 [00:02<00:01,  9.38it/s]Evaluation train:  70%|███████   | 28/40 [00:03<00:01,  9.49it/s]Evaluation train:  72%|███████▎  | 29/40 [00:03<00:01,  9.40it/s]Evaluation train:  75%|███████▌  | 30/40 [00:03<00:01,  8.65it/s]Evaluation train:  78%|███████▊  | 31/40 [00:03<00:01,  8.30it/s]Evaluation train:  80%|████████  | 32/40 [00:03<00:00,  8.18it/s]Evaluation train:  82%|████████▎ | 33/40 [00:03<00:00,  8.59it/s]Evaluation train:  85%|████████▌ | 34/40 [00:03<00:00,  8.86it/s]Evaluation train:  88%|████████▊ | 35/40 [00:03<00:00,  9.03it/s]Evaluation train:  90%|█████████ | 36/40 [00:03<00:00,  9.26it/s]Evaluation train:  92%|█████████▎| 37/40 [00:04<00:00,  9.37it/s]Evaluation train:  95%|█████████▌| 38/40 [00:04<00:00,  9.36it/s]Evaluation train:  98%|█████████▊| 39/40 [00:04<00:00,  9.43it/s]Evaluation train: 100%|██████████| 40/40 [00:04<00:00,  9.35it/s]
+Evaluation vali :   0%|          | 0/6 [00:00<?, ?it/s]Evaluation vali :  17%|█▋        | 1/6 [00:00<00:00,  9.90it/s]Evaluation vali :  33%|███▎      | 2/6 [00:00<00:00,  9.72it/s]Evaluation vali :  50%|█████     | 3/6 [00:00<00:00,  9.74it/s]Evaluation vali :  67%|██████▋   | 4/6 [00:00<00:00,  9.46it/s]Evaluation vali :  83%|████████▎ | 5/6 [00:00<00:00,  9.46it/s]Evaluation vali : 100%|██████████| 6/6 [00:00<00:00, 11.02it/s]
+Evaluation test :   0%|          | 0/12 [00:00<?, ?it/s]Evaluation test :   8%|▊         | 1/12 [00:00<00:01,  9.91it/s]Evaluation test :  17%|█▋        | 2/12 [00:00<00:01,  9.88it/s]Evaluation test :  25%|██▌       | 3/12 [00:00<00:00,  9.18it/s]Evaluation test :  33%|███▎      | 4/12 [00:00<00:00,  8.43it/s]Evaluation test :  42%|████▏     | 5/12 [00:00<00:00,  8.65it/s]Evaluation test :  50%|█████     | 6/12 [00:00<00:00,  8.99it/s]Evaluation test :  58%|█████▊    | 7/12 [00:00<00:00,  8.62it/s]Evaluation test :  67%|██████▋   | 8/12 [00:00<00:00,  8.92it/s]Evaluation test :  75%|███████▌  | 9/12 [00:01<00:00,  9.13it/s]Evaluation test :  83%|████████▎ | 10/12 [00:01<00:00,  9.28it/s]Evaluation test :  92%|█████████▏| 11/12 [00:01<00:00,  9.18it/s]Evaluation test : 100%|██████████| 12/12 [00:01<00:00,  9.70it/s]
+Took 23.5914s
+╒════════════╤════════╤════════════╤═════════════╕
+│ Polarity   │   loss │   accuracy │   hits_at_k │
+╞════════════╪════════╪════════════╪═════════════╡
+│ train      │ 0.0084 │     0.9990 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ vali       │ 0.3788 │     0.8660 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ test       │ 0.4290 │     0.8642 │      1.0000 │
+╘════════════╧════════╧════════════╧═════════════╛
+╒════════════╤════════╕
+│ combined   │   loss │
+╞════════════╪════════╡
+│ train      │ 0.0084 │
+├────────────┼────────┤
+│ vali       │ 0.3788 │
+├────────────┼────────┤
+│ test       │ 0.4290 │
+╘════════════╧════════╛
+Last improvement of combined validation loss happened 1 epoch ago
+
+
+Epoch   5
+Training:   0%|          | 0/40 [00:00<?, ?it/s]Training:   2%|▎         | 1/40 [00:00<00:17,  2.29it/s]Training:   5%|▌         | 2/40 [00:00<00:16,  2.28it/s]Training:   8%|▊         | 3/40 [00:01<00:17,  2.18it/s]Training:  10%|█         | 4/40 [00:01<00:16,  2.22it/s]Training:  12%|█▎        | 5/40 [00:02<00:15,  2.25it/s]Training:  15%|█▌        | 6/40 [00:02<00:15,  2.26it/s]Training:  18%|█▊        | 7/40 [00:03<00:15,  2.14it/s]Training:  20%|██        | 8/40 [00:03<00:14,  2.14it/s]Training:  22%|██▎       | 9/40 [00:04<00:14,  2.20it/s]Training:  25%|██▌       | 10/40 [00:04<00:13,  2.24it/s]Training:  28%|██▊       | 11/40 [00:04<00:12,  2.25it/s]Training:  30%|███       | 12/40 [00:05<00:12,  2.17it/s]Training:  32%|███▎      | 13/40 [00:05<00:12,  2.21it/s]Training:  35%|███▌      | 14/40 [00:06<00:11,  2.24it/s]Training:  38%|███▊      | 15/40 [00:06<00:11,  2.26it/s]Training:  40%|████      | 16/40 [00:07<00:10,  2.26it/s]Training:  42%|████▎     | 17/40 [00:07<00:10,  2.27it/s]Training:  45%|████▌     | 18/40 [00:08<00:09,  2.23it/s]Training:  48%|████▊     | 19/40 [00:08<00:09,  2.25it/s]Training:  50%|█████     | 20/40 [00:08<00:08,  2.27it/s]Training:  52%|█████▎    | 21/40 [00:09<00:08,  2.28it/s]Training:  55%|█████▌    | 22/40 [00:09<00:07,  2.29it/s]Training:  57%|█████▊    | 23/40 [00:10<00:07,  2.30it/s]Training:  60%|██████    | 24/40 [00:10<00:06,  2.29it/s]Training:  62%|██████▎   | 25/40 [00:11<00:06,  2.25it/s]Training:  65%|██████▌   | 26/40 [00:11<00:06,  2.26it/s]Training:  68%|██████▊   | 27/40 [00:12<00:05,  2.24it/s]Training:  70%|███████   | 28/40 [00:12<00:05,  2.17it/s]Training:  72%|███████▎  | 29/40 [00:12<00:05,  2.20it/s]Training:  75%|███████▌  | 30/40 [00:13<00:04,  2.23it/s]Training:  78%|███████▊  | 31/40 [00:13<00:03,  2.26it/s]Training:  80%|████████  | 32/40 [00:14<00:03,  2.28it/s]Training:  82%|████████▎ | 33/40 [00:14<00:03,  2.29it/s]Training:  85%|████████▌ | 34/40 [00:15<00:02,  2.30it/s]Training:  88%|████████▊ | 35/40 [00:15<00:02,  2.30it/s]Training:  90%|█████████ | 36/40 [00:16<00:01,  2.26it/s]Training:  92%|█████████▎| 37/40 [00:16<00:01,  2.10it/s]Training:  95%|█████████▌| 38/40 [00:17<00:00,  2.07it/s]Training:  98%|█████████▊| 39/40 [00:17<00:00,  2.09it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.64it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.26it/s]
+Evaluation train:   0%|          | 0/40 [00:00<?, ?it/s]Evaluation train:   2%|▎         | 1/40 [00:00<00:04,  8.80it/s]Evaluation train:   5%|▌         | 2/40 [00:00<00:04,  9.05it/s]Evaluation train:   8%|▊         | 3/40 [00:00<00:04,  8.32it/s]Evaluation train:  10%|█         | 4/40 [00:00<00:04,  8.12it/s]Evaluation train:  12%|█▎        | 5/40 [00:00<00:04,  8.64it/s]Evaluation train:  15%|█▌        | 6/40 [00:00<00:03,  8.90it/s]Evaluation train:  18%|█▊        | 7/40 [00:00<00:03,  9.14it/s]Evaluation train:  20%|██        | 8/40 [00:00<00:03,  9.31it/s]Evaluation train:  22%|██▎       | 9/40 [00:00<00:03,  9.41it/s]Evaluation train:  25%|██▌       | 10/40 [00:01<00:03,  9.47it/s]Evaluation train:  28%|██▊       | 11/40 [00:01<00:03,  9.54it/s]Evaluation train:  30%|███       | 12/40 [00:01<00:02,  9.61it/s]Evaluation train:  32%|███▎      | 13/40 [00:01<00:02,  9.58it/s]Evaluation train:  35%|███▌      | 14/40 [00:01<00:02,  9.18it/s]Evaluation train:  38%|███▊      | 15/40 [00:01<00:02,  9.22it/s]Evaluation train:  40%|████      | 16/40 [00:01<00:02,  9.31it/s]Evaluation train:  42%|████▎     | 17/40 [00:01<00:02,  9.41it/s]Evaluation train:  45%|████▌     | 18/40 [00:01<00:02,  9.44it/s]Evaluation train:  48%|████▊     | 19/40 [00:02<00:02,  9.52it/s]Evaluation train:  50%|█████     | 20/40 [00:02<00:02,  9.21it/s]Evaluation train:  52%|█████▎    | 21/40 [00:02<00:02,  9.02it/s]Evaluation train:  55%|█████▌    | 22/40 [00:02<00:02,  8.46it/s]Evaluation train:  57%|█████▊    | 23/40 [00:02<00:02,  8.11it/s]Evaluation train:  60%|██████    | 24/40 [00:02<00:01,  8.10it/s]Evaluation train:  62%|██████▎   | 25/40 [00:02<00:01,  8.56it/s]Evaluation train:  65%|██████▌   | 26/40 [00:02<00:01,  8.88it/s]Evaluation train:  68%|██████▊   | 27/40 [00:02<00:01,  9.14it/s]Evaluation train:  70%|███████   | 28/40 [00:03<00:01,  9.33it/s]Evaluation train:  72%|███████▎  | 29/40 [00:03<00:01,  9.40it/s]Evaluation train:  75%|███████▌  | 30/40 [00:03<00:01,  9.51it/s]Evaluation train:  78%|███████▊  | 31/40 [00:03<00:00,  9.58it/s]Evaluation train:  80%|████████  | 32/40 [00:03<00:00,  9.63it/s]Evaluation train:  82%|████████▎ | 33/40 [00:03<00:00,  9.69it/s]Evaluation train:  85%|████████▌ | 34/40 [00:03<00:00,  9.61it/s]Evaluation train:  88%|████████▊ | 35/40 [00:03<00:00,  9.63it/s]Evaluation train:  90%|█████████ | 36/40 [00:03<00:00,  9.65it/s]Evaluation train:  92%|█████████▎| 37/40 [00:04<00:00,  9.64it/s]Evaluation train:  95%|█████████▌| 38/40 [00:04<00:00,  9.69it/s]Evaluation train:  98%|█████████▊| 39/40 [00:04<00:00,  9.45it/s]Evaluation train: 100%|██████████| 40/40 [00:04<00:00,  9.37it/s]
+Evaluation vali :   0%|          | 0/6 [00:00<?, ?it/s]Evaluation vali :  17%|█▋        | 1/6 [00:00<00:00,  9.70it/s]Evaluation vali :  33%|███▎      | 2/6 [00:00<00:00,  9.65it/s]Evaluation vali :  50%|█████     | 3/6 [00:00<00:00,  9.61it/s]Evaluation vali :  67%|██████▋   | 4/6 [00:00<00:00,  9.68it/s]Evaluation vali :  83%|████████▎ | 5/6 [00:00<00:00,  9.67it/s]Evaluation vali : 100%|██████████| 6/6 [00:00<00:00, 11.15it/s]
+Evaluation test :   0%|          | 0/12 [00:00<?, ?it/s]Evaluation test :   8%|▊         | 1/12 [00:00<00:01,  9.58it/s]Evaluation test :  17%|█▋        | 2/12 [00:00<00:01,  9.63it/s]Evaluation test :  25%|██▌       | 3/12 [00:00<00:00,  9.56it/s]Evaluation test :  33%|███▎      | 4/12 [00:00<00:00,  9.21it/s]Evaluation test :  42%|████▏     | 5/12 [00:00<00:00,  8.89it/s]Evaluation test :  50%|█████     | 6/12 [00:00<00:00,  9.13it/s]Evaluation test :  58%|█████▊    | 7/12 [00:00<00:00,  9.25it/s]Evaluation test :  67%|██████▋   | 8/12 [00:00<00:00,  9.40it/s]Evaluation test :  75%|███████▌  | 9/12 [00:00<00:00,  9.38it/s]Evaluation test :  83%|████████▎ | 10/12 [00:01<00:00,  9.39it/s]Evaluation test :  92%|█████████▏| 11/12 [00:01<00:00,  9.54it/s]Evaluation test : 100%|██████████| 12/12 [00:01<00:00, 10.05it/s]
+Took 23.7245s
+╒════════════╤════════╤════════════╤═════════════╕
+│ Polarity   │   loss │   accuracy │   hits_at_k │
+╞════════════╪════════╪════════════╪═════════════╡
+│ train      │ 0.0035 │     0.9994 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ vali       │ 0.4264 │     0.8599 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ test       │ 0.4681 │     0.8614 │      1.0000 │
+╘════════════╧════════╧════════════╧═════════════╛
+╒════════════╤════════╕
+│ combined   │   loss │
+╞════════════╪════════╡
+│ train      │ 0.0035 │
+├────────────┼────────┤
+│ vali       │ 0.4264 │
+├────────────┼────────┤
+│ test       │ 0.4681 │
+╘════════════╧════════╛
+Last improvement of combined validation loss happened 2 epochs ago
+
+
+Epoch   6
+Training:   0%|          | 0/40 [00:00<?, ?it/s]Training:   2%|▎         | 1/40 [00:00<00:17,  2.28it/s]Training:   5%|▌         | 2/40 [00:00<00:16,  2.28it/s]Training:   8%|▊         | 3/40 [00:01<00:16,  2.29it/s]Training:  10%|█         | 4/40 [00:01<00:15,  2.30it/s]Training:  12%|█▎        | 5/40 [00:02<00:15,  2.30it/s]Training:  15%|█▌        | 6/40 [00:02<00:14,  2.28it/s]Training:  18%|█▊        | 7/40 [00:03<00:14,  2.29it/s]Training:  20%|██        | 8/40 [00:03<00:14,  2.21it/s]Training:  22%|██▎       | 9/40 [00:03<00:13,  2.24it/s]Training:  25%|██▌       | 10/40 [00:04<00:13,  2.24it/s]Training:  28%|██▊       | 11/40 [00:04<00:12,  2.27it/s]Training:  30%|███       | 12/40 [00:05<00:12,  2.19it/s]Training:  32%|███▎      | 13/40 [00:05<00:12,  2.21it/s]Training:  35%|███▌      | 14/40 [00:06<00:11,  2.25it/s]Training:  38%|███▊      | 15/40 [00:06<00:11,  2.26it/s]Training:  40%|████      | 16/40 [00:07<00:10,  2.27it/s]Training:  42%|████▎     | 17/40 [00:07<00:10,  2.28it/s]Training:  45%|████▌     | 18/40 [00:07<00:09,  2.29it/s]Training:  48%|████▊     | 19/40 [00:08<00:09,  2.30it/s]Training:  50%|█████     | 20/40 [00:08<00:08,  2.26it/s]Training:  52%|█████▎    | 21/40 [00:09<00:08,  2.20it/s]Training:  55%|█████▌    | 22/40 [00:09<00:08,  2.19it/s]Training:  57%|█████▊    | 23/40 [00:10<00:07,  2.22it/s]Training:  60%|██████    | 24/40 [00:10<00:07,  2.24it/s]Training:  62%|██████▎   | 25/40 [00:11<00:06,  2.23it/s]Training:  65%|██████▌   | 26/40 [00:11<00:06,  2.18it/s]Training:  68%|██████▊   | 27/40 [00:12<00:05,  2.22it/s]Training:  70%|███████   | 28/40 [00:12<00:05,  2.22it/s]Training:  72%|███████▎  | 29/40 [00:12<00:04,  2.24it/s]Training:  75%|███████▌  | 30/40 [00:13<00:04,  2.26it/s]Training:  78%|███████▊  | 31/40 [00:13<00:03,  2.27it/s]Training:  80%|████████  | 32/40 [00:14<00:03,  2.26it/s]Training:  82%|████████▎ | 33/40 [00:14<00:03,  2.28it/s]Training:  85%|████████▌ | 34/40 [00:15<00:02,  2.28it/s]Training:  88%|████████▊ | 35/40 [00:15<00:02,  2.25it/s]Training:  90%|█████████ | 36/40 [00:15<00:01,  2.26it/s]Training:  92%|█████████▎| 37/40 [00:16<00:01,  2.28it/s]Training:  95%|█████████▌| 38/40 [00:16<00:00,  2.29it/s]Training:  98%|█████████▊| 39/40 [00:17<00:00,  2.23it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.79it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.29it/s]
+Evaluation train:   0%|          | 0/40 [00:00<?, ?it/s]Evaluation train:   2%|▎         | 1/40 [00:00<00:03,  9.85it/s]Evaluation train:   5%|▌         | 2/40 [00:00<00:04,  9.50it/s]Evaluation train:   8%|▊         | 3/40 [00:00<00:04,  9.21it/s]Evaluation train:  10%|█         | 4/40 [00:00<00:03,  9.06it/s]Evaluation train:  12%|█▎        | 5/40 [00:00<00:04,  8.45it/s]Evaluation train:  15%|█▌        | 6/40 [00:00<00:03,  8.78it/s]Evaluation train:  18%|█▊        | 7/40 [00:00<00:03,  9.08it/s]Evaluation train:  20%|██        | 8/40 [00:00<00:03,  9.15it/s]Evaluation train:  22%|██▎       | 9/40 [00:00<00:03,  9.29it/s]Evaluation train:  25%|██▌       | 10/40 [00:01<00:03,  9.30it/s]Evaluation train:  28%|██▊       | 11/40 [00:01<00:03,  9.39it/s]Evaluation train:  30%|███       | 12/40 [00:01<00:02,  9.45it/s]Evaluation train:  32%|███▎      | 13/40 [00:01<00:02,  9.47it/s]Evaluation train:  35%|███▌      | 14/40 [00:01<00:02,  9.58it/s]Evaluation train:  38%|███▊      | 15/40 [00:01<00:02,  9.55it/s]Evaluation train:  40%|████      | 16/40 [00:01<00:02,  9.06it/s]Evaluation train:  42%|████▎     | 17/40 [00:01<00:02,  9.02it/s]Evaluation train:  45%|████▌     | 18/40 [00:01<00:02,  8.89it/s]Evaluation train:  48%|████▊     | 19/40 [00:02<00:02,  9.15it/s]Evaluation train:  50%|█████     | 20/40 [00:02<00:02,  9.24it/s]Evaluation train:  52%|█████▎    | 21/40 [00:02<00:02,  9.29it/s]Evaluation train:  55%|█████▌    | 22/40 [00:02<00:01,  9.38it/s]Evaluation train:  57%|█████▊    | 23/40 [00:02<00:01,  9.48it/s]Evaluation train:  60%|██████    | 24/40 [00:02<00:01,  9.48it/s]Evaluation train:  62%|██████▎   | 25/40 [00:02<00:01,  9.19it/s]Evaluation train:  65%|██████▌   | 26/40 [00:02<00:01,  7.59it/s]Evaluation train:  68%|██████▊   | 27/40 [00:03<00:01,  7.88it/s]Evaluation train:  70%|███████   | 28/40 [00:03<00:01,  8.36it/s]Evaluation train:  72%|███████▎  | 29/40 [00:03<00:01,  8.75it/s]Evaluation train:  75%|███████▌  | 30/40 [00:03<00:01,  9.03it/s]Evaluation train:  78%|███████▊  | 31/40 [00:03<00:00,  9.24it/s]Evaluation train:  80%|████████  | 32/40 [00:03<00:00,  9.32it/s]Evaluation train:  82%|████████▎ | 33/40 [00:03<00:00,  9.43it/s]Evaluation train:  85%|████████▌ | 34/40 [00:03<00:00,  9.50it/s]Evaluation train:  88%|████████▊ | 35/40 [00:03<00:00,  9.60it/s]Evaluation train:  90%|█████████ | 36/40 [00:03<00:00,  9.65it/s]Evaluation train:  92%|█████████▎| 37/40 [00:04<00:00,  9.57it/s]Evaluation train:  95%|█████████▌| 38/40 [00:04<00:00,  9.62it/s]Evaluation train:  98%|█████████▊| 39/40 [00:04<00:00,  9.61it/s]Evaluation train: 100%|██████████| 40/40 [00:04<00:00,  9.35it/s]
+Evaluation vali :   0%|          | 0/6 [00:00<?, ?it/s]Evaluation vali :  17%|█▋        | 1/6 [00:00<00:00,  9.87it/s]Evaluation vali :  33%|███▎      | 2/6 [00:00<00:00,  9.69it/s]Evaluation vali :  50%|█████     | 3/6 [00:00<00:00,  9.69it/s]Evaluation vali :  67%|██████▋   | 4/6 [00:00<00:00,  9.66it/s]Evaluation vali :  83%|████████▎ | 5/6 [00:00<00:00,  9.74it/s]Evaluation vali : 100%|██████████| 6/6 [00:00<00:00, 11.14it/s]
+Evaluation test :   0%|          | 0/12 [00:00<?, ?it/s]Evaluation test :   8%|▊         | 1/12 [00:00<00:01,  9.62it/s]Evaluation test :  17%|█▋        | 2/12 [00:00<00:01,  8.55it/s]Evaluation test :  25%|██▌       | 3/12 [00:00<00:00,  9.06it/s]Evaluation test :  33%|███▎      | 4/12 [00:00<00:00,  9.24it/s]Evaluation test :  42%|████▏     | 5/12 [00:00<00:00,  9.41it/s]Evaluation test :  50%|█████     | 6/12 [00:00<00:00,  9.51it/s]Evaluation test :  58%|█████▊    | 7/12 [00:00<00:00,  9.52it/s]Evaluation test :  67%|██████▋   | 8/12 [00:00<00:00,  9.55it/s]Evaluation test :  75%|███████▌  | 9/12 [00:00<00:00,  9.58it/s]Evaluation test :  83%|████████▎ | 10/12 [00:01<00:00,  9.65it/s]Evaluation test :  92%|█████████▏| 11/12 [00:01<00:00,  9.67it/s]Evaluation test : 100%|██████████| 12/12 [00:01<00:00, 10.17it/s]
+Took 23.4960s
+╒════════════╤════════╤════════════╤═════════════╕
+│ Polarity   │   loss │   accuracy │   hits_at_k │
+╞════════════╪════════╪════════════╪═════════════╡
+│ train      │ 0.0024 │     0.9998 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ vali       │ 0.4965 │     0.8524 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ test       │ 0.5440 │     0.8586 │      1.0000 │
+╘════════════╧════════╧════════════╧═════════════╛
+╒════════════╤════════╕
+│ combined   │   loss │
+╞════════════╪════════╡
+│ train      │ 0.0024 │
+├────────────┼────────┤
+│ vali       │ 0.4965 │
+├────────────┼────────┤
+│ test       │ 0.5440 │
+╘════════════╧════════╛
+Last improvement of combined validation loss happened 3 epochs ago
+
+
+Epoch   7
+Training:   0%|          | 0/40 [00:00<?, ?it/s]Training:   2%|▎         | 1/40 [00:00<00:17,  2.28it/s]Training:   5%|▌         | 2/40 [00:00<00:16,  2.28it/s]Training:   8%|▊         | 3/40 [00:01<00:16,  2.31it/s]Training:  10%|█         | 4/40 [00:01<00:16,  2.25it/s]Training:  12%|█▎        | 5/40 [00:02<00:15,  2.21it/s]Training:  15%|█▌        | 6/40 [00:02<00:15,  2.19it/s]Training:  18%|█▊        | 7/40 [00:03<00:15,  2.16it/s]Training:  20%|██        | 8/40 [00:03<00:14,  2.21it/s]Training:  22%|██▎       | 9/40 [00:04<00:13,  2.24it/s]Training:  25%|██▌       | 10/40 [00:04<00:13,  2.26it/s]Training:  28%|██▊       | 11/40 [00:04<00:12,  2.24it/s]Training:  30%|███       | 12/40 [00:05<00:12,  2.26it/s]Training:  32%|███▎      | 13/40 [00:05<00:11,  2.27it/s]Training:  35%|███▌      | 14/40 [00:06<00:11,  2.28it/s]Training:  38%|███▊      | 15/40 [00:06<00:11,  2.22it/s]Training:  40%|████      | 16/40 [00:07<00:10,  2.23it/s]Training:  42%|████▎     | 17/40 [00:07<00:10,  2.25it/s]Training:  45%|████▌     | 18/40 [00:08<00:09,  2.27it/s]Training:  48%|████▊     | 19/40 [00:08<00:09,  2.28it/s]Training:  50%|█████     | 20/40 [00:08<00:08,  2.29it/s]Training:  52%|█████▎    | 21/40 [00:09<00:08,  2.30it/s]Training:  55%|█████▌    | 22/40 [00:09<00:08,  2.19it/s]Training:  57%|█████▊    | 23/40 [00:10<00:07,  2.13it/s]Training:  60%|██████    | 24/40 [00:10<00:07,  2.06it/s]Training:  62%|██████▎   | 25/40 [00:11<00:07,  2.09it/s]Training:  65%|██████▌   | 26/40 [00:11<00:06,  2.10it/s]Training:  68%|██████▊   | 27/40 [00:12<00:06,  2.13it/s]Training:  70%|███████   | 28/40 [00:12<00:05,  2.13it/s]Training:  72%|███████▎  | 29/40 [00:13<00:05,  2.16it/s]Training:  75%|███████▌  | 30/40 [00:13<00:04,  2.15it/s]Training:  78%|███████▊  | 31/40 [00:14<00:04,  2.14it/s]Training:  80%|████████  | 32/40 [00:14<00:03,  2.17it/s]Training:  82%|████████▎ | 33/40 [00:14<00:03,  2.17it/s]Training:  85%|████████▌ | 34/40 [00:15<00:02,  2.18it/s]Training:  88%|████████▊ | 35/40 [00:15<00:02,  2.19it/s]Training:  90%|█████████ | 36/40 [00:16<00:01,  2.18it/s]Training:  92%|█████████▎| 37/40 [00:16<00:01,  2.16it/s]Training:  95%|█████████▌| 38/40 [00:17<00:00,  2.17it/s]Training:  98%|█████████▊| 39/40 [00:17<00:00,  2.12it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.63it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.23it/s]
+Evaluation train:   0%|          | 0/40 [00:00<?, ?it/s]Evaluation train:   2%|▎         | 1/40 [00:00<00:04,  9.57it/s]Evaluation train:   5%|▌         | 2/40 [00:00<00:04,  9.28it/s]Evaluation train:   8%|▊         | 3/40 [00:00<00:03,  9.36it/s]Evaluation train:  10%|█         | 4/40 [00:00<00:03,  9.35it/s]Evaluation train:  12%|█▎        | 5/40 [00:00<00:03,  9.35it/s]Evaluation train:  15%|█▌        | 6/40 [00:00<00:03,  9.19it/s]Evaluation train:  18%|█▊        | 7/40 [00:00<00:03,  9.24it/s]Evaluation train:  20%|██        | 8/40 [00:00<00:03,  9.07it/s]Evaluation train:  22%|██▎       | 9/40 [00:00<00:03,  8.73it/s]Evaluation train:  25%|██▌       | 10/40 [00:01<00:03,  8.96it/s]Evaluation train:  28%|██▊       | 11/40 [00:01<00:03,  9.11it/s]Evaluation train:  30%|███       | 12/40 [00:01<00:03,  9.08it/s]Evaluation train:  32%|███▎      | 13/40 [00:01<00:03,  8.80it/s]Evaluation train:  35%|███▌      | 14/40 [00:01<00:02,  8.91it/s]Evaluation train:  38%|███▊      | 15/40 [00:01<00:02,  8.66it/s]Evaluation train:  40%|████      | 16/40 [00:01<00:02,  8.26it/s]Evaluation train:  42%|████▎     | 17/40 [00:01<00:02,  8.02it/s]Evaluation train:  45%|████▌     | 18/40 [00:02<00:02,  7.85it/s]Evaluation train:  48%|████▊     | 19/40 [00:02<00:02,  8.23it/s]Evaluation train:  50%|█████     | 20/40 [00:02<00:02,  8.51it/s]Evaluation train:  52%|█████▎    | 21/40 [00:02<00:02,  8.55it/s]Evaluation train:  55%|█████▌    | 22/40 [00:02<00:02,  8.63it/s]Evaluation train:  57%|█████▊    | 23/40 [00:02<00:01,  8.62it/s]Evaluation train:  60%|██████    | 24/40 [00:02<00:01,  8.52it/s]Evaluation train:  62%|██████▎   | 25/40 [00:02<00:01,  7.51it/s]Evaluation train:  65%|██████▌   | 26/40 [00:03<00:01,  8.00it/s]Evaluation train:  68%|██████▊   | 27/40 [00:03<00:01,  8.38it/s]Evaluation train:  70%|███████   | 28/40 [00:03<00:01,  8.74it/s]Evaluation train:  72%|███████▎  | 29/40 [00:03<00:01,  9.00it/s]Evaluation train:  75%|███████▌  | 30/40 [00:03<00:01,  9.01it/s]Evaluation train:  78%|███████▊  | 31/40 [00:03<00:00,  9.20it/s]Evaluation train:  80%|████████  | 32/40 [00:03<00:00,  9.34it/s]Evaluation train:  82%|████████▎ | 33/40 [00:03<00:00,  9.43it/s]Evaluation train:  85%|████████▌ | 34/40 [00:03<00:00,  9.49it/s]Evaluation train:  88%|████████▊ | 35/40 [00:03<00:00,  9.53it/s]Evaluation train:  90%|█████████ | 36/40 [00:04<00:00,  9.57it/s]Evaluation train:  92%|█████████▎| 37/40 [00:04<00:00,  9.64it/s]Evaluation train:  95%|█████████▌| 38/40 [00:04<00:00,  9.61it/s]Evaluation train:  98%|█████████▊| 39/40 [00:04<00:00,  9.66it/s]Evaluation train: 100%|██████████| 40/40 [00:04<00:00,  9.07it/s]
+Evaluation vali :   0%|          | 0/6 [00:00<?, ?it/s]Evaluation vali :  17%|█▋        | 1/6 [00:00<00:00,  9.78it/s]Evaluation vali :  33%|███▎      | 2/6 [00:00<00:00,  9.67it/s]Evaluation vali :  50%|█████     | 3/6 [00:00<00:00,  9.68it/s]Evaluation vali :  67%|██████▋   | 4/6 [00:00<00:00,  9.68it/s]Evaluation vali :  83%|████████▎ | 5/6 [00:00<00:00,  9.60it/s]Evaluation vali : 100%|██████████| 6/6 [00:00<00:00, 11.11it/s]
+Evaluation test :   0%|          | 0/12 [00:00<?, ?it/s]Evaluation test :   8%|▊         | 1/12 [00:00<00:01,  9.86it/s]Evaluation test :  17%|█▋        | 2/12 [00:00<00:01,  9.78it/s]Evaluation test :  25%|██▌       | 3/12 [00:00<00:00,  9.77it/s]Evaluation test :  33%|███▎      | 4/12 [00:00<00:00,  9.74it/s]Evaluation test :  42%|████▏     | 5/12 [00:00<00:00,  9.01it/s]Evaluation test :  50%|█████     | 6/12 [00:00<00:00,  8.90it/s]Evaluation test :  58%|█████▊    | 7/12 [00:00<00:00,  9.17it/s]Evaluation test :  67%|██████▋   | 8/12 [00:00<00:00,  9.28it/s]Evaluation test :  75%|███████▌  | 9/12 [00:00<00:00,  9.41it/s]Evaluation test :  83%|████████▎ | 10/12 [00:01<00:00,  9.44it/s]Evaluation test :  92%|█████████▏| 11/12 [00:01<00:00,  9.40it/s]Evaluation test : 100%|██████████| 12/12 [00:01<00:00, 10.06it/s]
+Took 24.1121s
+╒════════════╤════════╤════════════╤═════════════╕
+│ Polarity   │   loss │   accuracy │   hits_at_k │
+╞════════════╪════════╪════════════╪═════════════╡
+│ train      │ 0.0017 │     0.9998 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ vali       │ 0.5506 │     0.8479 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ test       │ 0.5989 │     0.8572 │      1.0000 │
+╘════════════╧════════╧════════════╧═════════════╛
+╒════════════╤════════╕
+│ combined   │   loss │
+╞════════════╪════════╡
+│ train      │ 0.0017 │
+├────────────┼────────┤
+│ vali       │ 0.5506 │
+├────────────┼────────┤
+│ test       │ 0.5989 │
+╘════════════╧════════╛
+Last improvement of combined validation loss happened 4 epochs ago
+
+
+Epoch   8
+Training:   0%|          | 0/40 [00:00<?, ?it/s]Training:   2%|▎         | 1/40 [00:00<00:16,  2.32it/s]Training:   5%|▌         | 2/40 [00:00<00:16,  2.30it/s]Training:   8%|▊         | 3/40 [00:01<00:16,  2.31it/s]Training:  10%|█         | 4/40 [00:01<00:16,  2.18it/s]Training:  12%|█▎        | 5/40 [00:02<00:15,  2.22it/s]Training:  15%|█▌        | 6/40 [00:02<00:15,  2.25it/s]Training:  18%|█▊        | 7/40 [00:03<00:14,  2.28it/s]Training:  20%|██        | 8/40 [00:03<00:14,  2.28it/s]Training:  22%|██▎       | 9/40 [00:03<00:13,  2.29it/s]Training:  25%|██▌       | 10/40 [00:04<00:13,  2.28it/s]Training:  28%|██▊       | 11/40 [00:04<00:13,  2.22it/s]Training:  30%|███       | 12/40 [00:05<00:12,  2.25it/s]Training:  32%|███▎      | 13/40 [00:05<00:12,  2.24it/s]Training:  35%|███▌      | 14/40 [00:06<00:11,  2.26it/s]Training:  38%|███▊      | 15/40 [00:06<00:11,  2.18it/s]Training:  40%|████      | 16/40 [00:07<00:10,  2.21it/s]Training:  42%|████▎     | 17/40 [00:07<00:10,  2.21it/s]Training:  45%|████▌     | 18/40 [00:08<00:09,  2.23it/s]Training:  48%|████▊     | 19/40 [00:08<00:09,  2.21it/s]Training:  50%|█████     | 20/40 [00:08<00:09,  2.22it/s]Training:  52%|█████▎    | 21/40 [00:09<00:08,  2.25it/s]Training:  55%|█████▌    | 22/40 [00:09<00:07,  2.28it/s]Training:  57%|█████▊    | 23/40 [00:10<00:07,  2.28it/s]Training:  60%|██████    | 24/40 [00:10<00:07,  2.21it/s]Training:  62%|██████▎   | 25/40 [00:11<00:06,  2.24it/s]Training:  65%|██████▌   | 26/40 [00:11<00:06,  2.27it/s]Training:  68%|██████▊   | 27/40 [00:12<00:05,  2.27it/s]Training:  70%|███████   | 28/40 [00:12<00:05,  2.25it/s]Training:  72%|███████▎  | 29/40 [00:12<00:04,  2.23it/s]Training:  75%|███████▌  | 30/40 [00:13<00:04,  2.25it/s]Training:  78%|███████▊  | 31/40 [00:13<00:04,  2.23it/s]Training:  80%|████████  | 32/40 [00:14<00:03,  2.26it/s]Training:  82%|████████▎ | 33/40 [00:14<00:03,  2.26it/s]Training:  85%|████████▌ | 34/40 [00:15<00:02,  2.28it/s]Training:  88%|████████▊ | 35/40 [00:15<00:02,  2.29it/s]Training:  90%|█████████ | 36/40 [00:15<00:01,  2.29it/s]Training:  92%|█████████▎| 37/40 [00:16<00:01,  2.30it/s]Training:  95%|█████████▌| 38/40 [00:16<00:00,  2.29it/s]Training:  98%|█████████▊| 39/40 [00:17<00:00,  2.25it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.76it/s]Training: 100%|██████████| 40/40 [00:17<00:00,  2.29it/s]
+Evaluation train:   0%|          | 0/40 [00:00<?, ?it/s]Evaluation train:   2%|▎         | 1/40 [00:00<00:05,  7.67it/s]Evaluation train:   5%|▌         | 2/40 [00:00<00:04,  8.38it/s]Evaluation train:   8%|▊         | 3/40 [00:00<00:04,  8.91it/s]Evaluation train:  10%|█         | 4/40 [00:00<00:03,  9.20it/s]Evaluation train:  12%|█▎        | 5/40 [00:00<00:03,  9.29it/s]Evaluation train:  15%|█▌        | 6/40 [00:00<00:03,  9.32it/s]Evaluation train:  18%|█▊        | 7/40 [00:00<00:03,  9.42it/s]Evaluation train:  20%|██        | 8/40 [00:00<00:03,  8.93it/s]Evaluation train:  22%|██▎       | 9/40 [00:00<00:03,  8.99it/s]Evaluation train:  25%|██▌       | 10/40 [00:01<00:03,  8.89it/s]Evaluation train:  28%|██▊       | 11/40 [00:01<00:03,  9.06it/s]Evaluation train:  30%|███       | 12/40 [00:01<00:03,  9.19it/s]Evaluation train:  32%|███▎      | 13/40 [00:01<00:02,  9.33it/s]Evaluation train:  35%|███▌      | 14/40 [00:01<00:02,  9.41it/s]Evaluation train:  38%|███▊      | 15/40 [00:01<00:02,  9.52it/s]Evaluation train:  40%|████      | 16/40 [00:01<00:02,  9.56it/s]Evaluation train:  42%|████▎     | 17/40 [00:01<00:02,  9.51it/s]Evaluation train:  45%|████▌     | 18/40 [00:01<00:02,  8.90it/s]Evaluation train:  48%|████▊     | 19/40 [00:02<00:02,  8.51it/s]Evaluation train:  50%|█████     | 20/40 [00:02<00:02,  8.65it/s]Evaluation train:  52%|█████▎    | 21/40 [00:02<00:02,  8.95it/s]Evaluation train:  55%|█████▌    | 22/40 [00:02<00:01,  9.14it/s]Evaluation train:  57%|█████▊    | 23/40 [00:02<00:01,  9.30it/s]Evaluation train:  60%|██████    | 24/40 [00:02<00:01,  9.40it/s]Evaluation train:  62%|██████▎   | 25/40 [00:02<00:01,  9.51it/s]Evaluation train:  65%|██████▌   | 26/40 [00:02<00:01,  9.49it/s]Evaluation train:  68%|██████▊   | 27/40 [00:02<00:01,  9.48it/s]Evaluation train:  70%|███████   | 28/40 [00:03<00:01,  9.52it/s]Evaluation train:  72%|███████▎  | 29/40 [00:03<00:01,  8.92it/s]Evaluation train:  75%|███████▌  | 30/40 [00:03<00:01,  8.93it/s]Evaluation train:  78%|███████▊  | 31/40 [00:03<00:00,  9.13it/s]Evaluation train:  80%|████████  | 32/40 [00:03<00:00,  9.25it/s]Evaluation train:  82%|████████▎ | 33/40 [00:03<00:00,  9.36it/s]Evaluation train:  85%|████████▌ | 34/40 [00:03<00:00,  9.46it/s]Evaluation train:  88%|████████▊ | 35/40 [00:03<00:00,  9.45it/s]Evaluation train:  90%|█████████ | 36/40 [00:03<00:00,  9.19it/s]Evaluation train:  92%|█████████▎| 37/40 [00:04<00:00,  8.67it/s]Evaluation train:  95%|█████████▌| 38/40 [00:04<00:00,  8.37it/s]Evaluation train:  98%|█████████▊| 39/40 [00:04<00:00,  8.15it/s]Evaluation train: 100%|██████████| 40/40 [00:04<00:00,  9.19it/s]
+Evaluation vali :   0%|          | 0/6 [00:00<?, ?it/s]Evaluation vali :  17%|█▋        | 1/6 [00:00<00:00,  7.95it/s]Evaluation vali :  33%|███▎      | 2/6 [00:00<00:00,  8.61it/s]Evaluation vali :  50%|█████     | 3/6 [00:00<00:00,  8.97it/s]Evaluation vali :  67%|██████▋   | 4/6 [00:00<00:00,  9.04it/s]Evaluation vali :  83%|████████▎ | 5/6 [00:00<00:00,  8.98it/s]Evaluation vali : 100%|██████████| 6/6 [00:00<00:00, 10.28it/s]
+Evaluation test :   0%|          | 0/12 [00:00<?, ?it/s]Evaluation test :   8%|▊         | 1/12 [00:00<00:01,  9.72it/s]Evaluation test :  17%|█▋        | 2/12 [00:00<00:01,  9.65it/s]Evaluation test :  25%|██▌       | 3/12 [00:00<00:01,  8.93it/s]Evaluation test :  33%|███▎      | 4/12 [00:00<00:00,  9.20it/s]Evaluation test :  42%|████▏     | 5/12 [00:00<00:00,  9.26it/s]Evaluation test :  50%|█████     | 6/12 [00:00<00:00,  9.30it/s]Evaluation test :  58%|█████▊    | 7/12 [00:00<00:00,  9.41it/s]Evaluation test :  67%|██████▋   | 8/12 [00:00<00:00,  9.48it/s]Evaluation test :  75%|███████▌  | 9/12 [00:00<00:00,  8.72it/s]Evaluation test :  83%|████████▎ | 10/12 [00:01<00:00,  8.39it/s]Evaluation test :  92%|█████████▏| 11/12 [00:01<00:00,  8.21it/s]Evaluation test : 100%|██████████| 12/12 [00:01<00:00,  9.50it/s]
+Took 23.7055s
+╒════════════╤════════╤════════════╤═════════════╕
+│ Polarity   │   loss │   accuracy │   hits_at_k │
+╞════════════╪════════╪════════════╪═════════════╡
+│ train      │ 0.0008 │     0.9998 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ vali       │ 0.4915 │     0.8539 │      1.0000 │
+├────────────┼────────┼────────────┼─────────────┤
+│ test       │ 0.5515 │     0.8586 │      1.0000 │
+╘════════════╧════════╧════════════╧═════════════╛
+╒════════════╤════════╕
+│ combined   │   loss │
+╞════════════╪════════╡
+│ train      │ 0.0008 │
+├────────────┼────────┤
+│ vali       │ 0.4915 │
+├────────────┼────────┤
+│ test       │ 0.5515 │
+╘════════════╧════════╛
+Last improvement of combined validation loss happened 5 epochs ago
+
+EARLY STOPPING due to lack of validation improvement, it has been 5 epochs since last validation improvement
+
+Best validation model epoch: 3
+Best validation model loss on validation set combined: 0.3387611210346222
+Best validation model loss on test set combined: 0.3640950620174408
+
+Finished: experiment_run
+Saved to: results/experiment_run_1
+Evaluation:   0%|          | 0/12 [00:00<?, ?it/s]Evaluation:   8%|▊         | 1/12 [00:00<00:01,  9.84it/s]Evaluation:  17%|█▋        | 2/12 [00:00<00:01,  9.78it/s]Evaluation:  25%|██▌       | 3/12 [00:00<00:00,  9.64it/s]Evaluation:  33%|███▎      | 4/12 [00:00<00:00,  9.61it/s]Evaluation:  42%|████▏     | 5/12 [00:00<00:00,  9.64it/s]Evaluation:  50%|█████     | 6/12 [00:00<00:00,  9.65it/s]Evaluation:  58%|█████▊    | 7/12 [00:00<00:00,  9.66it/s]Evaluation:  67%|██████▋   | 8/12 [00:00<00:00,  9.61it/s]Evaluation:  75%|███████▌  | 9/12 [00:00<00:00,  9.62it/s]Evaluation:  83%|████████▎ | 10/12 [00:01<00:00,  9.16it/s]Evaluation:  92%|█████████▏| 11/12 [00:01<00:00,  8.70it/s]Evaluation: 100%|██████████| 12/12 [00:01<00:00,  9.94it/s]
+
+===== Polarity =====
+accuracy: 0.8656403
+hits_at_k: 1.0
+loss: 0.36409506
+overall_stats: { 'avg_f1_score_macro': 0.8652972062328876,
+  'avg_f1_score_micro': 0.8656403079076278,
+  'avg_f1_score_weighted': 0.8654256872766645,
+  'avg_precision_macro': 0.8692052964046301,
+  'avg_precision_micro': 0.8656403079076277,
+  'avg_precision_weighted': 0.8656403079076277,
+  'avg_recall_macro': 0.8621292425795936,
+  'avg_recall_micro': 0.8656403079076277,
+  'avg_recall_weighted': 0.8656403079076277,
+  'kappa_score': 0.7928356883655819,
+  'token_accuracy': 0.8656403079076277}
+per_class_stats: {<UNK>: {   'accuracy': 1.0,
+    'f1_score': 0,
+    'fall_out': 0.0,
+    'false_discovery_rate': 1.0,
+    'false_negative_rate': 1.0,
+    'false_negatives': 0,
+    'false_omission_rate': 0.0,
+    'false_positive_rate': 0.0,
+    'false_positives': 0,
+    'hit_rate': 0,
+    'informedness': 0.0,
+    'markedness': 0.0,
+    'matthews_correlation_coefficient': 0,
+    'miss_rate': 1.0,
+    'negative_predictive_value': 1.0,
+    'positive_predictive_value': 0,
+    'precision': 0,
+    'recall': 0,
+    'sensitivity': 0,
+    'specificity': 1.0,
+    'true_negative_rate': 1.0,
+    'true_negatives': 1429,
+    'true_positive_rate': 0,
+    'true_positives': 0},
+  neutral: {   'accuracy': 0.8824352694191743,
+    'f1_score': 0.8675078864353312,
+    'fall_out': 0.12113720642768855,
+    'false_discovery_rate': 0.15123456790123457,
+    'false_negative_rate': 0.11290322580645162,
+    'false_negatives': 70,
+    'false_omission_rate': 0.08962868117797695,
+    'false_positive_rate': 0.12113720642768855,
+    'false_positives': 98,
+    'hit_rate': 0.8870967741935484,
+    'informedness': 0.7659595677658597,
+    'markedness': 0.7591367509207885,
+    'matthews_correlation_coefficient': 0.7625405285035455,
+    'miss_rate': 0.11290322580645162,
+    'negative_predictive_value': 0.910371318822023,
+    'positive_predictive_value': 0.8487654320987654,
+    'precision': 0.8487654320987654,
+    'recall': 0.8870967741935484,
+    'sensitivity': 0.8870967741935484,
+    'specificity': 0.8788627935723115,
+    'true_negative_rate': 0.8788627935723115,
+    'true_negatives': 711,
+    'true_positive_rate': 0.8870967741935484,
+    'true_positives': 550},
+  negative: {   'accuracy': 0.9062281315605318,
+    'f1_score': 0.8316582914572863,
+    'fall_out': 0.05490196078431375,
+    'false_discovery_rate': 0.14470284237726094,
+    'false_negative_rate': 0.19070904645476772,
+    'false_negatives': 78,
+    'false_omission_rate': 0.07485604606525909,
+    'false_positive_rate': 0.05490196078431375,
+    'false_positives': 56,
+    'hit_rate': 0.8092909535452323,
+    'informedness': 0.7543889927609184,
+    'markedness': 0.7804411115574799,
+    'matthews_correlation_coefficient': 0.767304492399894,
+    'miss_rate': 0.19070904645476772,
+    'negative_predictive_value': 0.9251439539347409,
+    'positive_predictive_value': 0.8552971576227391,
+    'precision': 0.8552971576227391,
+    'recall': 0.8092909535452323,
+    'sensitivity': 0.8092909535452323,
+    'specificity': 0.9450980392156862,
+    'true_negative_rate': 0.9450980392156862,
+    'true_negatives': 964,
+    'true_positive_rate': 0.8092909535452323,
+    'true_positives': 331},
+  positive: {   'accuracy': 0.9426172148355494,
+    'f1_score': 0.8967254408060454,
+    'fall_out': 0.03692905733722063,
+    'false_discovery_rate': 0.09644670050761417,
+    'false_negative_rate': 0.10999999999999999,
+    'false_negatives': 44,
+    'false_omission_rate': 0.04251207729468598,
+    'false_positive_rate': 0.03692905733722063,
+    'false_positives': 38,
+    'hit_rate': 0.89,
+    'informedness': 0.8530709426627794,
+    'markedness': 0.8610412221977,
+    'matthews_correlation_coefficient': 0.8570468173277954,
+    'miss_rate': 0.10999999999999999,
+    'negative_predictive_value': 0.957487922705314,
+    'positive_predictive_value': 0.9035532994923858,
+    'precision': 0.9035532994923858,
+    'recall': 0.89,
+    'sensitivity': 0.89,
+    'specificity': 0.9630709426627794,
+    'true_negative_rate': 0.9630709426627794,
+    'true_negatives': 991,
+    'true_positive_rate': 0.89,
+    'true_positives': 356}}
+Saved to: results/experiment_run_1
