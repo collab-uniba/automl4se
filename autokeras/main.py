@@ -49,7 +49,7 @@ if __name__ == "__main__":
     # df = df.replace({'Polarity': mapping})
     y = np.array(df.Polarity)
     x_train, x_test, y_train, y_test = train_test_split(
-        x, y, test_size=0.1, random_state=1977, stratify=y
+        x, y, random_state=1977, stratify=y
     )
 
     # train
@@ -60,13 +60,13 @@ if __name__ == "__main__":
         overwrite=True,
         objective=kerastuner.Objective("val_f1_score", direction="max"),
         metrics=[f1_score],
-        # max_trials=1, # It only tries 1 model as a quick demo
+        max_trials=10
         custom_objects=my_custom_objects,
     )
     clf.fit(
         x_train,
         y_train,
-        validation_split=0.2,
+        epochs=10,
     )
     model = clf.export_model()
     model.summary()
